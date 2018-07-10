@@ -13,12 +13,12 @@ fi
 export INSTALL_MOD_PATH=$MODPATH
 export INSTALL_KERN_PATH=$KERNPATH
 export KERNEL_SRC=`pwd`
-sudo rm -rf $USDPATH/lib/modules/*
-sudo make modules_install
-sudo cp arch/arm/boot/zImage $KERNPATH/.
+rm -rf $MODPATH/lib/modules/*
+make LOCALVERSION= modules_install
+cp arch/arm/boot/zImage $KERNPATH/.
 cd kernel-module-imx-gpu-viv
 make -j32
-sudo make modules_install
+make LOCALVERSION= modules_install
 echo "Syncing ... "
 sync
 
