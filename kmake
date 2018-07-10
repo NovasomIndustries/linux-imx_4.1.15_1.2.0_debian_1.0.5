@@ -1,0 +1,3 @@
+#!/bin/sh
+. /Devel/NOVAsom_SDK/Utils/SourceMe32_5
+make LOCALVERSION= -j32 zImage modules
