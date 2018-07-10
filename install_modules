@@ -1,0 +1,17 @@
+#!/bin/sh
+USDPATH=$1
+if [ "$1" == "" ]; then
+	echo "uSD Destination missing, please provide complete path"
+	exit
+fi
+. /Devel/NOVAsom_SDK/Utils/SourceMe32_5
+export INSTALL_MOD_PATH=$USDPATH
+export KERNEL_SRC=`pwd`
+rm -rf $USDPATH/lib/modules/*
+make modules_install
+cd kernel-module-imx-gpu-viv
+make -j32
+make modules_install
+echo "Syncing ... "
+sync
+
