@@ -1,6 +1,6 @@
 #!/bin/sh
 MODPATH=$1
-KERNPATH=$1
+KERNPATH=$2
 if [ "$1" == "" ]; then
 	echo "uSD Modules Destination is missing, please provide complete path"
 	exit
@@ -17,7 +17,7 @@ rm -rf $MODPATH/lib/modules/*
 make LOCALVERSION= modules_install
 cp arch/arm/boot/zImage $KERNPATH/.
 cd kernel-module-imx-gpu-viv
-make -j32
+make LOCALVERSION= -j32
 make LOCALVERSION= modules_install
 echo "Syncing ... "
 sync
