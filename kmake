@@ -1,9 +1,4 @@
 #!/bin/sh
-export KERNEL_SRC=`pwd`
-
 . /Devel/NOVAsom_SDK/Utils/SourceMe32_5
 make LOCALVERSION= -j32 zImage modules
-cd kernel-module-imx-gpu-viv
-make LOCALVERSION= -j32
-make LOCALVERSION= modules_install
 
